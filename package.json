@@ -4,8 +4,9 @@
   "description": "transform image to css box-shadow pixelated image",
   "main": "js/main.js",
   "scripts": {
-    "test": "tape test/index.js",
-    "build": "webpack",
+    "test-only": "tape test/index.js",
+    "test": "npm run lint && npm run test-only",
+    "build": "npm run test && webpack",
     "lint": "eslint .",
     "server": "node server"
   },

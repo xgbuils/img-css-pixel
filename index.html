@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="initial-scale=1">
     <link rel="stylesheet" href="css/main.css" />
     <script src="dist/main.js"></script>
     <title>pixeling images</title>
@@ -14,7 +14,7 @@
             <canvas id="image_canvas" class="hidden" height=300></canvas>
         </div>
         <label for="num_pixels">pixels:</label>
-        <input id="num_pixels" value="10"/>
+        <input id="num_pixels" value="10" type="number" min="1" max="300"/>
         <button id="pixelar_button" class="hidden">Pixelar</button>
         <div>
             <div id="pixelated_css"></div>

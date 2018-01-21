@@ -83,7 +83,7 @@ module.exports = reduce
 /***/ (function(module, exports, __webpack_require__) {
 
 var calculateCssStyle = __webpack_require__(2)
-var calculateCellAverageColor = __webpack_require__(4)
+var calculateCellAverageColor = __webpack_require__(5)
 
 var byId = document.getElementById.bind(document)
 
@@ -163,23 +163,21 @@ document.addEventListener('DOMContentLoaded', app)
 
 var reduce = __webpack_require__(0)
 var GridIterator = __webpack_require__(3)
+var arrayToCssColor = __webpack_require__(4)
 
 function calculateCssStyle(buffer, options) {
     var gridIterator = new GridIterator(options)
     var size = options.size
+    var calculateCellAverageColor = options.calculateCellAverageColor
     var boxShadow = reduce(gridIterator, function(acc, position) {
-        var averageColor = options.calculateCellAverageColor(buffer, {
+        var cssAverageColor = arrayToCssColor(calculateCellAverageColor(buffer, {
             position: position,
             size: options.size,
             grid: options.grid
-        })
-            .map(function(color) {
-                return ('00' + color.toString(16)).substr(-2,2);
-            })
-            .join('')
+        }))
         var xCoord = size * position.x
         var yCoord = size * (position.y + 1)
-        acc.push(xCoord + 'px ' + yCoord + 'px 0 #' + averageColor)
+        acc.push(xCoord + 'px ' + yCoord + 'px 0 ' + cssAverageColor)
         return acc
     }, []).join(',')
     return 'box-shadow: ' + boxShadow + ';width:' + size + 'px;height:' + size + 'px'
@@ -217,10 +215,23 @@ module.exports = GridIterator
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+function arrayToCssColor(array) {
+    return '#' + array.map(function(chunk) {
+        return ('00' + chunk.toString(16)).substr(-2, 2)
+    }).join('')
+}
+
+module.exports = arrayToCssColor
+
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var reduce = __webpack_require__(0)
-var CellIterator = __webpack_require__(5)
+var CellIterator = __webpack_require__(6)
 
 function calculateCellAverageColor(buffer, options) {
     var cellSize = options.size
@@ -245,7 +256,7 @@ module.exports = calculateCellAverageColor
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 var CellIterator = function(options) {
