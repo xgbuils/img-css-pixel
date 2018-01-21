@@ -24,7 +24,7 @@ module.exports = function(test) {
                 size: 20,
                 calculateCellAverageColor: calculateCellAverageColorMock
             })
-            st.deepEqual(averageColor, 'box-shadow: 0px 0px 0 #223344,20px 0px 0 #556677,0px 20px 0 #8899aa,20px 20px 0 #bbccdd;width:20px;height:20px')
+            st.deepEqual(averageColor, 'box-shadow: 0px 20px 0 #223344,20px 20px 0 #556677,0px 40px 0 #8899aa,20px 40px 0 #bbccdd;width:20px;height:20px')
             st.end()
         })
     })
