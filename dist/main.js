@@ -178,7 +178,7 @@ function calculateCssStyle(buffer, options) {
             })
             .join('')
         var xCoord = size * position.x
-        var yCoord = size * position.y
+        var yCoord = size * (position.y + 1)
         acc.push(xCoord + 'px ' + yCoord + 'px 0 #' + averageColor)
         return acc
     }, []).join(',')

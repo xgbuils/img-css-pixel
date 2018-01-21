@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 var StaticServer = require('static-server')
 
 var server = new StaticServer({

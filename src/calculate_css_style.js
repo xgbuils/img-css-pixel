@@ -11,7 +11,7 @@ function calculateCssStyle(buffer, options) {
             grid: options.grid
         })
             .map(function(color) {
-                return ('00' + color.toString(16)).substr(-2,2);
+                return ('00' + color.toString(16)).substr(-2, 2)
             })
             .join('')
         var xCoord = size * position.x
